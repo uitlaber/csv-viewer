@@ -1,7 +1,7 @@
 <template>
 
 	<div class="sidebar">
-		<div class="search">
+		<div class="search" v-if="notes.length">
 			<el-input placeholder="Поиск" v-model="searchQuery"></el-input>			
 		</div>
 		<el-menu>  
@@ -31,13 +31,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
   name: 'sidebar',
   computed: {
     ...mapGetters([
       'filtered'
+    ]),
+    ...mapState([
+      'notes'
     ])
   },
   data () {

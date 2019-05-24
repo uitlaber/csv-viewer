@@ -3,3 +3,11 @@
 {"title":"test 22","content":"<pre class=\"ql-syntax\" spellcheck=\"false\">&lt;?php \n  echo \"Hello World\";\n?&gt;\n</pre>","_id":"pcAX43OapR74Ymul"}
 {"title":"test22 22","content":"<pre class=\"ql-syntax\" spellcheck=\"false\">&lt;?php \n\necho \"Hello World\";\n\n?&gt; \n</pre>","_id":"s1ZxyuLIKUqTxPRt"}
 {"title":"test","content":"<iframe class=\"ql-video\" frameborder=\"0\" allowfullscreen=\"true\" src=\"https://www.youtube.com/embed/b3tQani35uQ?showinfo=0\"></iframe><p><br></p>","_id":"zA3Ofpe1xXXOPhUz"}
+{"$$deleted":true,"_id":"zA3Ofpe1xXXOPhUz"}
+{"$$deleted":true,"_id":"s1ZxyuLIKUqTxPRt"}
+{"$$deleted":true,"_id":"pcAX43OapR74Ymul"}
+{"$$deleted":true,"_id":"g41sb2rFbk7UngEJ"}
+{"$$deleted":true,"_id":"TSFutTZbQLgxJgcy"}
+{"title":"test","content":"","_id":"dWhJAmnDCrkXH3XS"}
+{"title":"test","content":"","_id":"dWhJAmnDCrkXH3XS"}
+{"$$deleted":true,"_id":"dWhJAmnDCrkXH3XS"}

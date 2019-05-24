@@ -102,14 +102,17 @@ export default {
 
 <style lang="scss">
 
+.ql-toolbar{
+  margin-bottom: 1rem;
+}
 .ql-editor{
   height: 80vh !important;
   margin-bottom: 1rem !important;
-  padding: 0;
+  padding: 0 !important;
 }
 
-.ql-snow{
-  border: none;
+.ql-container{
+  border: none !important;
 }
 
 .buttons{
