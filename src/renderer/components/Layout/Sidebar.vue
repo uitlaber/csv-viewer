@@ -1,7 +1,8 @@
 <template>
 
 	<div class="sidebar">
-		<div class="search" v-if="notes.length">
+    {{notes}}
+		<div class="search" >
 			<el-input placeholder="Поиск" v-model="searchQuery"></el-input>			
 		</div>
 		<el-menu>  
@@ -16,7 +17,7 @@
 
 
     <el-dialog
-    title="Tips"
+    title="Новая заметка"
     :visible.sync="showCreateNote"
     width="30%">
     <el-input placeholder="Название" v-model="newNote.title" @keyup.enter.native="addNote(newNote).then(()=>newNote.title = '', showCreateNote = false)" ></el-input>   
@@ -36,11 +37,11 @@ import { mapGetters, mapActions, mapState } from 'vuex'
 export default {
   name: 'sidebar',
   computed: {
-    ...mapGetters([
-      'filtered'
-    ]),
     ...mapState([
       'notes'
+    ]),
+    ...mapGetters([
+      'filtered'
     ])
   },
   data () {
@@ -78,6 +79,7 @@ export default {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 99;
   }
 
   .el-menu{

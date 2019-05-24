@@ -1,13 +1,16 @@
 <template>
 	<div>
       <div v-if="currentNote">
-
+        <p class="note-info">
+          <span class="created"><i class="el-icon-date"></i> Дата создания: {{note.created_at|moment('D-M-Y H:m:s')}}</span>  
+          <span class="updated">Дата обнавления: {{note.updated_at|moment('D-M-Y H:m:s')}}</span>  
+        </p>
         <div class="buttons">
           <div>
             <el-button type="success" size="small" @click="updateNote(note).then(updated)" v-if="isEdit" icon="el-icon-edit">Сохранить</el-button>
             <el-button  size="small" @click="isEdit = true" v-if="!isEdit" icon="el-icon-edit">Изменить</el-button>
           </div>
-          <el-button type="danger" @click="deleteCurrentNote()" icon="el-icon-delete" circle></el-button>
+          <el-button size="small"  @click="deleteCurrentNote()" icon="el-icon-delete" ></el-button>
        </div>
        <div class="ql-snow" v-if="!isEdit">  
        <div class="preview ql-editor" >
@@ -76,7 +79,7 @@ export default {
       'deleteNote'
     ]),
     deleteCurrentNote () {
-      this.$confirm('Вы точно хотите удалить?', 'Warning', {
+      this.$confirm('Вы точно хотите удалить?', 'Внимание', {
         confirmButtonText: 'Да',
         cancelButtonText: 'Отмена',
         type: 'warning'
@@ -120,7 +123,15 @@ export default {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-
+.note-info{
+  text-align: right;
+  font-size: .7rem;
+  color: #999;
+  margin-top: 0;
+  .created{
+    margin-right: 1rem;
+  }
+}
 .note-content{
   img{
       max-width: 100%;

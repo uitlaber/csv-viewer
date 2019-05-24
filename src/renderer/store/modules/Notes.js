@@ -52,12 +52,15 @@ const actions = {
   },
   async addNote ({commit, dispatch}, note) {
     note = JSON.parse(JSON.stringify(note))
+    note.created_at = new Date().getTime()
+    note.updated_at = new Date().getTime()
     db.insert(note, (_err, newNote) => {
       commit('ADD_NOTE', newNote)
       dispatch('setCurrent', newNote._id)
     })
   },
   async updateNote ({commit}, note) {
+    note.updated_at = new Date().getTime()
     db.update({ _id: note._id }, note, {}, () => commit('UPDATE_NOTE', note))
   },
   deleteNote ({commit}, id) {

@@ -15,6 +15,11 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
+import VueMoment from 'vue-moment'
+import moment from 'moment'
+
+Vue.use(VueMoment, { moment })
+
 Vue.use(VueQuillEditor)
 
 Vue.use(ElementUI)
