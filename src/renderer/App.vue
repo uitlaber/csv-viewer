@@ -41,6 +41,10 @@
   	grid-template-columns: 1fr 4fr;
   }
 
+  .field{
+    margin-bottom: 1rem;
+  }
+
   .content{
   	padding: 1rem;
   	box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.15);
