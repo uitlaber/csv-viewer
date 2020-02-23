@@ -1,143 +1,81 @@
 <template>
-	<div>
-      <div v-if="currentNote">
-        <p class="note-info">
-          <span class="created"><i class="el-icon-date"></i> Дата создания: {{note.created_at|moment('D-M-Y H:m:s')}}</span>  
-          <span class="updated">Дата обнавления: {{note.updated_at|moment('D-M-Y H:m:s')}}</span>  
-        </p>
-        <div class="buttons">
-          <div>
-            <el-button type="success" size="small" @click="updateNote(note).then(updated)" v-if="isEdit" icon="el-icon-edit">Сохранить</el-button>
-            <el-button  size="small" @click="isEdit = true" v-if="!isEdit" icon="el-icon-edit">Изменить</el-button>
-          </div>
-          <el-button size="small"  @click="deleteCurrentNote()" icon="el-icon-delete" ></el-button>
-       </div>
-       <div class="ql-snow" v-if="!isEdit">  
-       <div class="preview ql-editor" >
-       <h1>{{note.title}}</h1>
-       <div class="note-content" v-html="note.content">
-
-       </div>
-       </div>
-       </div> 
-       <div class="edit" v-if="isEdit">
-         <div class="field">
-          <el-input
-          placeholder="Название"
-          v-model="note.title"
-          >
-        </el-input>
-       </div>    
-       <div class="field">
-         <quill-editor v-model="note.content"
-                :options="editorOption"
-               >
-          </quill-editor>
-       </div>
-
-       </div>
-       
-
-      </div>
-	</div>
+<el-upload class="import-csv" accept=".csv" v-loading="loading" drag :show-file-list="false" :on-change="onProgress" action=""
+:auto-upload="false"
+>
+  <i class="el-icon-document-add"></i>
+  <div class="el-upload__text">Перетащите файл или <em>нажмите что бы загрузить CSV</em></div>
+  <!--  <div class="el-upload__tip" slot="tip">jpg/png files with a size less than 500kb</div> -->
+</el-upload>
 </template>
-<script>
 
-import { mapGetters, mapActions } from 'vuex'
+<script>
+import {
+  mapGetters,
+  mapActions
+} from 'vuex'
 
 export default {
   name: 'main-page',
   computed: {
     ...mapGetters([
-      'currentNote'
-    ]),
-    isChanged () {
-      if (this.note.title !== this.currentNote.title || this.note.content !== this.currentNote.content) {
-        return true
-      }
-      return false
-    }
+      'getPath'
+    ])
   },
   data () {
     return {
-      editorOption: {},
-      isEdit: false,
-      note: null
+      loading: false
     }
   },
   created () {
-    this.note = Object.assign({}, this.currentNote)
-  },
-  watch: {
-    currentNote (newVal) {
-      this.note = Object.assign({}, newVal)
-    }
+    // this.note = Object.assign({}, this.currentNote)
   },
   methods: {
     ...mapActions([
-      'updateNote',
-      'deleteNote'
+      'setPath'
     ]),
-    deleteCurrentNote () {
-      this.$confirm('Вы точно хотите удалить?', 'Внимание', {
-        confirmButtonText: 'Да',
-        cancelButtonText: 'Отмена',
-        type: 'warning'
-      }).then(() => {
-        this.deleteNote(this.currentNote._id).then(() => {
-          this.$message({
-            type: 'success',
-            message: 'Удаление завершено'
-          })
-        })
-      }).catch(() => {})
-    },
-    updated () {
-      this.$message({
-        type: 'success',
-        message: 'Сохранено'
-      })
-      this.isEdit = false
+    onProgress (file, fileList) {
+      this.loading = true
+      this.setPath(file.raw.path)
+      console.log(this.getPath)
+      this.loading = false
+      this.$router.push('/grid')
     }
   }
 }
 </script>
 
 <style lang="scss">
-
-.ql-toolbar{
-  margin-bottom: 1rem;
-}
-.ql-editor{
-  height: 80vh !important;
-  margin-bottom: 1rem !important;
-  padding: 0 !important;
-}
-
-.ql-container{
-  border: none !important;
-}
-
-.buttons{
+.import-csv {
+  width: 100%;
+  height: 80%;
+  max-height: 100%;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-.note-info{
-  text-align: right;
-  font-size: .7rem;
-  color: #999;
-  margin-top: 0;
-  .created{
-    margin-right: 1rem;
+  align-items: center;
+
+  .el-upload {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   }
-}
-.note-content{
-  img{
-      max-width: 100%;
+
+  .el-upload-dragger {
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
   }
-}
-.preview{
-  padding: 0 !important;
+
+  .el-icon-document-add
+  {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: darkgray;
+  }
 }
 </style>

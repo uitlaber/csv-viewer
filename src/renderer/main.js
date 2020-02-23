@@ -4,23 +4,18 @@ import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import Papa from 'papaparse'
+
 import App from './App'
 import router from './router'
 import store from './store'
-
-import VueQuillEditor from 'vue-quill-editor'
-
-// require styles
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
 
 import VueMoment from 'vue-moment'
 import moment from 'moment'
 
 Vue.use(VueMoment, { moment })
 
-Vue.use(VueQuillEditor)
+Vue.prototype.$papa = Papa
 
 Vue.use(ElementUI)
 

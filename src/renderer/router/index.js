@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/Main').default
     },
     {
+      path: '/grid',
+      name: 'grid-page',
+      component: require('@/components/Grid').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
