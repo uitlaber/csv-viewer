@@ -1,6 +1,6 @@
-# mynotes
+# CSV VIEWER
 
-> Simple notes
+> Simple csv viewer
 
 #### Build Setup
 
