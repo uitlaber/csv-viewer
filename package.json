@@ -1,8 +1,8 @@
 {
-  "name": "mynotes",
+  "name": "csv-viewer",
   "version": "0.0.1",
   "author": "Dastan Turysbekov <uitlaber@gmail.com>",
-  "description": "Simple notes",
+  "description": "Simple csv viewer",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -19,8 +19,8 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "mynotes",
-    "appId": "com.kz.mynotes",
+    "productName": "csv-viewer",
+    "appId": "com.kz.csvviewer",
     "directories": {
       "output": "build"
     },
