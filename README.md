@@ -2,7 +2,10 @@
 
 > Simple csv viewer
 
+
 #### Build Setup
+
+![alt text](https://img.vim-cn.com/de/365d9b6397dd835c8dfef09c62f833df80aa97.jpg "Screen")
 
 ``` bash
 # install dependencies
